@@ -24,12 +24,12 @@
 				v = u.jquery;
 			}	
 
-			doc.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/'+v+'/jquery.min.js">' + "<" + '/' + 'script>');
+			doc.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/'+v+'/jquery.min.js">' + "<" + '/' + 'script>');
 			co.log('\nLoading jQuery v' + v + '\n');
 		})(window, document, console);
 		</script>
 		
-		<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script-->
+		<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script-->
 		<script src="../src/jquery.quicksearch.js"></script>
 		<script>
 			$(function () {
@@ -88,12 +88,12 @@
 				*/
 
 				exampleFunction = function(){
-					alert("This function is called when there is no results and you set the 'OnNoResultsFound' function.");
+					alert("This function is called when there is no results and you set the 'onNoResultFound' function.");
 				}
 
 				$('input#id_noResultFunction').quicksearch(
 					'table#table_noResultFunction tbody tr',
-					{'onNoResultsFound': exampleFunction}
+					{'onNoResultFound': exampleFunction}
 				);				
 			});
 		</script>
@@ -101,7 +101,7 @@
 	<body>
 		<h1>jQuery quickSearch</h1>
 		
-		<p class="github"><a href="http://github.com/DeuxHuitHuit/quicksearch">More information and download at Github</a></p>
+		<p class="github"><a href="https://github.com/DeuxHuitHuit/quicksearch">More information and download at Github</a></p>
 		
 		<h2 id="examples">Examples</h2>
 		<h3>Simple example</h3>
@@ -865,7 +865,7 @@ $('input#id_noResultFunction').quicksearch(
 
 <p><a href="super_table.html">Super table example</a></p>
 
-<p class="github"><a href="http://github.com/DeuxHuitHuit/quicksearch">More information and download at Github</a></p>
+<p class="github"><a href="https://github.com/DeuxHuitHuit/quicksearch">More information and download at Github</a></p>
 
 	</body>
 </html>

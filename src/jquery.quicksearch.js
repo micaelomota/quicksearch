@@ -1,5 +1,5 @@
 /*! jQuery-QuickSearch - v2.0.2 - 2013-11-15
-* Copyright (c) 2013 Deux Huit Huit (http://deuxhuithuit.com/);
+* Copyright (c) 2013 Deux Huit Huit (https://deuxhuithuit.com/);
 * Licensed MIT http://deuxhuithuit.mit-license.org */
 /**
  * Copyrights: Deux Huit Huit, Rik Lomas.
@@ -18,6 +18,7 @@
 			noResults: '',
 			matchedResultsCount: 0,
 			bind: 'keyup search input',
+			resetBind: 'reset',
 			removeDiacritics: false,
 			minValLength: 0,
 			onBefore: $.noop,
@@ -177,8 +178,8 @@
 			}
 			
 			if (noresults) {
-				if($.isFunction(options.onNoResultsFound)){
-					options.onNoResultsFound(this);
+				if($.isFunction(options.onNoResultFound)){
+					options.onNoResultFound(this);
 				}else{
 					this.results(false);
 				}
@@ -266,12 +267,19 @@
 			
 			jq_results = $(target).not(options.noResults);
 			
-			var t = (typeof options.selector === "string") ? jq_results.find(options.selector) : jq_results;
-			
-			cache = t.map(function () {
-				var temp = self.strip_html(this.innerHTML);
-				return options.removeDiacritics ? self.removeDiacritics(temp) : temp;
-			});
+			if (typeof options.selector === "string") {
+				cache = jq_results.map(function() {
+					return $(this).find(options.selector).map(function() {
+						var temp = self.strip_html(this.innerHTML);
+						return options.removeDiacritics ? self.removeDiacritics(temp) : temp;
+					}).get().join(" ");
+				});
+			} else {
+				cache = jq_results.map(function () {
+					var temp = self.strip_html(this.innerHTML);
+					return options.removeDiacritics ? self.removeDiacritics(temp) : temp;
+				});
+			}
 			
 			rowcache = jq_results.map(function () {
 				return this;
@@ -303,8 +311,6 @@
 				}, options.delay);
 			}
 			
-			
-			
 			return this;
 		};
 		
@@ -326,4 +332,4 @@
 		
 	};
 
-}(jQuery, this, document));
+}(window.jQuery, this, document));
